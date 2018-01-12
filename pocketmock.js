@@ -67,24 +67,24 @@ program
             });
         });
 
-        server.listen(port, err => {
-            if (err) {
-                return console.log('Error:', err);
-            }
+        let regex = new RegExp('.' + extension + '$');
+        dir.readFiles(path.resolve(process.cwd(), directory),
+            { match: regex },
+            (err, content, next) => next(),
+            (err, files) => {
+                if (err) {
+                    if (err.code == 'ENOENT') {
+                        let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
+                        console.log('',  noRoutesMsg, '');
+                        process.exit(0);
+                    }
 
-            let regex = new RegExp('.' + extension + '$');
-            dir.readFiles(path.resolve(process.cwd(), directory),
-                { match: regex },
-                (err, content, next) => next(),
-                (err, files) => {
+                    throw err;
+                }
+
+                server.listen(port, err => {
                     if (err) {
-                        if (err.code == 'ENOENT') {
-                            let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
-                            console.log(noRoutesMsg);
-                            process.exit(0);
-                        }
-
-                        throw err;
+                        return console.log('Error:', err);
                     }
 
                     let srvMsg = chalk.white(util.format('🕹  Mock API Server is listening on %s 🕹', port));
@@ -97,9 +97,9 @@ program
                         let fullUrl = 'http://localhost:' + port + route;
                         console.info(chalk.yellowBright(' '+ fullUrl));
                     });
-                }
-            );
-        });
+                });
+            }
+        );
     });
 
 program.parse(process.argv);
