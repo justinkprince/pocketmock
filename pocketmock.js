@@ -7,9 +7,10 @@ const program = require('commander');
 const chalk = require('chalk');
 const dir = require('node-dir');
 const fs = require('fs-extra');
+const package = require('./package.json');
 
 program
-    .version('0.0.5');
+    .version(package.version);
 
 /**
  * Install sample data responses.
