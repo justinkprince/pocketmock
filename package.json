@@ -1,6 +1,6 @@
 {
   "name": "pocketmock",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Mock API server for local development.",
   "main": "pocketmock.js",
   "bin": {
