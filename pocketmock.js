@@ -9,7 +9,7 @@ const dir = require('node-dir');
 const fs = require('fs-extra');
 
 program
-    .version('0.0.4');
+    .version('0.0.5');
 
 /**
  * Install sample data responses.
@@ -102,3 +102,7 @@ program
     });
 
 program.parse(process.argv);
+
+if (program.args.length < 1 ) {
+    program.help();
+}
