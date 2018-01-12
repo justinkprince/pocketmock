@@ -81,7 +81,7 @@ program
                 (err, content, next) => next(),
                 (err, files) => {
                     if (err) {
-                        if (err == 'ENOENT') {
+                        if (err.code == 'ENOENT') {
                             let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
                             console.log(noRoutesMsg);
                             process.exit(0);
