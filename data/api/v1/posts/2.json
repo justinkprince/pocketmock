@@ -1,0 +1,13 @@
+{
+    "id": 2,
+    "created_at": "2017-12-31T14:36:00Z",
+    "updated_at": "2017-12-31T14:36:00Z",
+    "title": "Ten less-than-lethal pranks to pull on your friends",
+    "body": "Lorem ipsum...",
+    "author": {
+        "id": 2,
+        "username": "swonder",
+        "full_name": "Stevie Wonder",
+        "email": "stevie.wonder@cbsinteractive.com"
+    }
+}
