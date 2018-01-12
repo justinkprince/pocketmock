@@ -24,7 +24,7 @@ program
         let dest = path.resolve(process.cwd(), env.dir);
         fs.copy(src, dest, err => {
             if (err) { throw err; }
-            console.info(chalk.yellowBright('Sample mock API responses created at', dest));
+            console.info('\r\n', chalk.yellowBright('Sample mock API responses created at', dest), '\r\n');
         });
     });
 
@@ -75,7 +75,7 @@ program
                 if (err) {
                     if (err.code == 'ENOENT') {
                         let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
-                        console.log('',  noRoutesMsg, '');
+                        console.log('\r\n',  noRoutesMsg, '\r\n');
                         process.exit(0);
                     }
 
