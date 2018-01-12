@@ -80,12 +80,14 @@ program
                 { match: regex },
                 (err, content, next) => next(),
                 (err, files) => {
-                    if (err) { throw err; }
+                    if (err) {
+                        if (err == 'ENOENT') {
+                            let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
+                            console.log(noRoutesMsg);
+                            process.exit(0);
+                        }
 
-                    if (!files.length) {
-                        let noRoutesMsg = chalk.yellowBright(`No available routes. Run ${chalk.bgYellow.black('pocketmock sample')} to generate some sample responses.`);
-                        console.log(noRoutesMsg);
-                        process.exit(0);
+                        throw err;
                     }
 
                     console.log(chalk.white(' Available routes:'));
