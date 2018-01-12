@@ -71,10 +71,6 @@ program
             if (err) {
                 return console.log('Error:', err);
             }
-            let srvMsg = chalk.white(util.format('🕹  Mock API Server is listening on %s 🕹', port));
-            let killMsg = chalk.white('💀  Press Ctrl/Cmd + C to stop 💀');
-
-            console.log("\r\n", srvMsg, "\r\n\r\n", killMsg,  "\r\n");
 
             let regex = new RegExp('.' + extension + '$');
             dir.readFiles(path.resolve(process.cwd(), directory),
@@ -91,7 +87,11 @@ program
                         throw err;
                     }
 
+                    let srvMsg = chalk.white(util.format('🕹  Mock API Server is listening on %s 🕹', port));
+                    let killMsg = chalk.white('💀  Press Ctrl/Cmd + C to stop 💀');
+                    console.log("\r\n", srvMsg, "\r\n\r\n", killMsg,  "\r\n");
                     console.log(chalk.white(' Available routes:'));
+
                     return files.map(file => {
                         let route =  file.replace(path.resolve(process.cwd(), directory), '').replace('.'+extension, '');
                         let fullUrl = 'http://localhost:' + port + route;
