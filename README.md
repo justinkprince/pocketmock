@@ -30,5 +30,10 @@ To create a static API server that looks for response data files in a directory 
 pocketmock static -d mock-data
 ```
 
+### Sample data
+To create some sample data to test out pocketmock, run
+```pocketmock sample``` and then ```pocketmock static```. A mock API will be started on the default port ```3000``` and serve responses from the default data directory in ```data```.
+
+
 ## License
 This project is licensed under the terms of the MIT license.
